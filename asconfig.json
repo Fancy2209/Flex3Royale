@@ -1,0 +1,11 @@
+{
+	"config": "flex",
+	"compilerOptions": {
+		"source-path": [
+			"src"
+		],
+		"output": "bin/Flex3Royale.swf",
+		"keep-generated-actionscript": true
+	},
+	"mainClass": "Flex3Royale"
+}

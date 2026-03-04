@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:fx="http://www.adobe.com/2006/mxml"
+	xmlns:mx="library://ns.adobe.com/flex/mx">
+
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			
+			public function onButtonClick():void
+			{
+				var alert:Alert = Alert.show("Hello from Adobe Flex 3!\nRunning with Apache Royale and OpenFL!", "Message", Alert.OK, this);
+			}
+		]]>
+	</fx:Script>
+
+	<mx:Button label="Click Me!" click="onButtonClick()"/>
+
+</mx:Application>
