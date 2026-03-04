@@ -1,0 +1,31 @@
+{
+    "type": "lib",
+    "config": "royale",
+    "compilerOptions": {
+        "output": "bin/haloclassic.swc",
+        "include-file": [
+            {"file": "defaults.css", "path": "defaults.css"},
+            //{"file": "assets/Assets.swf", "path": "Assets.swf"}
+        ],
+        "include-classes": ["HaloClassicClasses"],
+        "source-path": ["src", "../framework/bundles/en_US/src"],
+        "js-library-path": [
+            "${royalelib}/libs/Reflection.swc",
+            "${royalelib}/libs/XML.swc"
+        ],
+        "swf-library-path": [
+            "${royalelib}/libs/Reflection.swc",
+            "${royalelib}/libs/XML.swc"
+        ],
+        "js-external-library-path": ["../../node_modules/openfl/dist/openfl.swc", "../framework/bin/framework.swc"],
+        "swf-external-library-path": ["${royalelib}/libs/player/32.0/playerglobal.swc", "../../node_modules/openfl/dist/openfl.swc", "../framework/bin/framework.swc"],
+        "targets": ["SWF", "JS"]
+    },
+    "additionalOptions":[
+        "-include-resource-bundles=controls,styles,core,collections,skins,effects,containers",
+        "-library-path=",
+        "-compiler.proxy-base-class=mx.utils.Proxy",
+        "-js-getter-prefix=get_",
+		"-js-setter-prefix=set_",
+        "-library-path="
+    ]}

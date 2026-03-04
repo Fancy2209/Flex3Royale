@@ -709,46 +709,13 @@ public class CursorManagerImpl implements ICursorManager
      */
     private function addContextMenuHandlers():void
     {
-        if (!listenForContextMenu)
-        {
-            const app:InteractiveObject = systemManager.document as InteractiveObject;
-        	const sm:InteractiveObject = systemManager as InteractiveObject;
-        	
-        	if (app && app.contextMenu)
-        	{
-        		app.contextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenu_menuSelectHandler,
-        		                                 true, EventPriority.CURSOR_MANAGEMENT);
-        		listenForContextMenu = true;
-        	}
-        	
-        	if (sm && sm.contextMenu)
-        	{
-        		sm.contextMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenu_menuSelectHandler,
-        		                                true, EventPriority.CURSOR_MANAGEMENT);
-        		listenForContextMenu = true;
-        	}     	
-        }
     }
     
     /**
      *  @private
      */
     private function removeContextMenuHandlers():void
-    {
-        if (listenForContextMenu)
-        {
-            const app:InteractiveObject = systemManager.document as InteractiveObject;
-        	const sm:InteractiveObject = systemManager as InteractiveObject;
-        	
-        	if (app && app.contextMenu)
-        		app.contextMenu.removeEventListener(ContextMenuEvent.MENU_SELECT, contextMenu_menuSelectHandler, true);
-
-        	if (sm && sm.contextMenu)
-        		sm.contextMenu.removeEventListener(ContextMenuEvent.MENU_SELECT, contextMenu_menuSelectHandler, true);
-   
-        	listenForContextMenu = false; 	
-        }
-    }
+    {}
 
     /**
      *  @private

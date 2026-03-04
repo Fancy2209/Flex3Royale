@@ -21,7 +21,7 @@ import flash.events.MouseEvent;
 import flash.geom.Point;
 import flash.geom.Rectangle;
 import flash.ui.Keyboard;
-import flash.xml.XMLNode;
+//import flash.xml.XMLNode;
 
 import mx.collections.ArrayCollection;
 import mx.collections.ICollectionView;
@@ -598,8 +598,8 @@ public class MenuBar extends UIComponent implements IFocusManagerComponent
         // handle strings and xml
         if (typeof(value)=="string")
             value = new XML(value);
-        else if (value is XMLNode)
-            value = new XML(XMLNode(value).toString());
+        //else if (value is XMLNode)
+        //    value = new XML(XMLNode(value).toString());
         else if (value is XMLList)
             value = new XMLListCollection(value as XMLList);
         

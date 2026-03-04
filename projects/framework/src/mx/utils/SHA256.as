@@ -44,7 +44,7 @@ package mx.utils
         * return String - 64 character hexidecimal representation of the digest.
         * 
         */   
-        public static function computeDigest(byteArray:ByteArray):String
+        public static function computeDigest(byteArray:flash.utils.ByteArray):String
         {
             // Preprocessing
             // 1. Pad the message
@@ -99,7 +99,7 @@ package mx.utils
             
             // Hash computation
             // for all message blocks
-            var m:ByteArray = new ByteArray();    // message block; 16 32-bit words or 64 bytes
+            var m:flash.utils.ByteArray = new flash.utils.ByteArray();    // message block; 16 32-bit words or 64 bytes
             var w:Array = new Array(64);    // message schedule, 64 32-bit words
             var paddingStart:uint = 0;           // index to start padding message
             var paddingSize:uint = 0;            // amount of padding to copy to message
@@ -253,7 +253,7 @@ package mx.utils
         * @param byteArray - message
         * @param m - message block (output)
         */
-        private static function getMessageBlock(byteArray:ByteArray, m:ByteArray):void
+        private static function getMessageBlock(byteArray:flash.utils.ByteArray, m:flash.utils.ByteArray):void
         {
             byteArray.readBytes(m, 0, Math.min(byteArray.bytesAvailable, 64));
             

@@ -16,6 +16,8 @@
  *  this separate include file so it can be used in ITextField
  */
 
+   import flash.accessibility.AccessibilityImplementation; 
+
     /**
      *  @copy flash.display.InteractiveObject#tabEnabled
      */
@@ -48,7 +50,8 @@
     
     /** 
      *  @private
+     */
     function get accessibilityImplementation() : AccessibilityImplementation;
     function set accessibilityImplementation( value : AccessibilityImplementation ) : void;
-     */
+
     

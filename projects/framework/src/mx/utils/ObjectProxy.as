@@ -18,13 +18,17 @@ import flash.utils.getQualifiedClassName;
 import flash.utils.IDataInput;
 import flash.utils.IDataOutput;
 import flash.utils.IExternalizable;
-import flash.utils.Proxy;
+import mx.utils.Proxy;
+COMPILE::SWF {
 import flash.utils.flash_proxy;
+}
 import mx.core.IPropertyChangeNotifier;
 import mx.events.PropertyChangeEvent;
 import mx.events.PropertyChangeEventKind;
 
+COMPILE::SWF {
 use namespace flash_proxy;
+}
 use namespace object_proxy;
 
 [Bindable("propertyChange")]
@@ -280,7 +284,19 @@ public dynamic class ObjectProxy extends Proxy
      *  In some instances this value may be an instance of 
      *  <code>ObjectProxy</code>.
      */
+    COMPILE::SWF
     override flash_proxy function getProperty(name:*):*
+    {
+        return proxy_getProperty(name);
+    }
+
+    COMPILE::JS
+    override public function getProperty(name:String):*
+    {
+        return proxy_getProperty(name);
+    }
+
+    private function proxy_getProperty(name:*):*
     {
         // if we have a data proxy for this then
         var result:*;
@@ -315,7 +331,19 @@ public dynamic class ObjectProxy extends Proxy
      *
      *  @return The return value of the called method.
      */
+    COMPILE::SWF
     override flash_proxy function callProperty(name:*, ... rest):*
+    {
+        return proxy_callProperty(name, rest);
+    }
+
+    COMPILE::JS
+    override public function callProperty(name:*, ... rest):*
+    {
+        return proxy_callProperty(name, rest);
+    }
+
+    private function proxy_callProperty(name:*, ... rest):*
     {
         return _item[name].apply(_item, rest)
     }
@@ -330,7 +358,19 @@ public dynamic class ObjectProxy extends Proxy
      *
      *  @return A Boolean indicating if the property was deleted.
      */
+    COMPILE::SWF
     override flash_proxy function deleteProperty(name:*):Boolean
+    {
+        return proxy_deleteProperty(name);
+    }
+
+    COMPILE::JS
+    override public function deleteProperty(name:String):Boolean
+    {
+        return proxy_deleteProperty(name);
+    }
+
+    private function proxy_deleteProperty(name:*):Boolean
     {
         var notifier:IPropertyChangeNotifier = IPropertyChangeNotifier(notifiers[name]);
         if (notifier)
@@ -359,6 +399,13 @@ public dynamic class ObjectProxy extends Proxy
     /**
      *  @private
      */
+    COMPILE::JS
+    override public function hasProperty(name:String):Boolean
+    {
+        return(name in _item);
+    }
+
+    COMPILE::SWF
     override flash_proxy function hasProperty(name:*):Boolean
     {
         return(name in _item);
@@ -367,6 +414,7 @@ public dynamic class ObjectProxy extends Proxy
     /**
      *  @private
      */
+    COMPILE::SWF
     override flash_proxy function nextName(index:int):String
     {
         return propertyList[index -1];
@@ -375,6 +423,7 @@ public dynamic class ObjectProxy extends Proxy
     /**
      *  @private
      */
+    COMPILE::SWF
     override flash_proxy function nextNameIndex(index:int):int
     {
         if (index == 0)
@@ -395,6 +444,7 @@ public dynamic class ObjectProxy extends Proxy
     /**
      *  @private
      */
+    COMPILE::SWF
     override flash_proxy function nextValue(index:int):*
     {
         return _item[propertyList[index -1]];
@@ -409,7 +459,41 @@ public dynamic class ObjectProxy extends Proxy
      *
      *  @param value Value that should be set on the proxied object.
      */
+    COMPILE::SWF
     override flash_proxy function setProperty(name:*, value:*):void
+    {
+        var oldVal:* = _item[name];
+        if (oldVal !== value)
+        {
+            // Update item.
+            _item[name] = value;
+
+            // Stop listening for events on old item if we currently are.
+            var notifier:IPropertyChangeNotifier =
+                IPropertyChangeNotifier(notifiers[name]);
+            if (notifier)
+            {
+                notifier.removeEventListener(
+                    PropertyChangeEvent.PROPERTY_CHANGE,
+                    propertyChangeHandler);
+                delete notifiers[name];
+            }
+
+            // Notify anyone interested.
+            if (dispatcher.hasEventListener(PropertyChangeEvent.PROPERTY_CHANGE))
+            {
+                if (name is QName)
+                    name = QName(name).localName;
+                var event:PropertyChangeEvent =
+                    PropertyChangeEvent.createUpdateEvent(
+                        this, name.toString(), oldVal, value);
+                dispatcher.dispatchEvent(event);
+            } 
+        }
+    }
+
+    COMPILE::JS
+    override public function setProperty(name:String, value:*):void
     {
         var oldVal:* = _item[name];
         if (oldVal !== value)
@@ -532,7 +616,7 @@ public dynamic class ObjectProxy extends Proxy
      *
      *  @see flash.events.EventDispatcher#addEventListener()
      */
-    public function addEventListener(type:String, listener:Function,
+    COMPILE::JS {override} public function addEventListener(type:String, listener:Function,
                                      useCapture:Boolean = false,
                                      priority:int = 0,
                                      useWeakReference:Boolean = false):void
@@ -562,7 +646,7 @@ public dynamic class ObjectProxy extends Proxy
      *
      *  @see flash.events.EventDispatcher#removeEventListener()
      */
-    public function removeEventListener(type:String, listener:Function,
+    COMPILE::JS {override} public function removeEventListener(type:String, listener:Function,
                                         useCapture:Boolean = false):void
     {
         dispatcher.removeEventListener(type, listener, useCapture);
@@ -585,7 +669,7 @@ public dynamic class ObjectProxy extends Proxy
      *
      *  @see flash.events.EventDispatcher#dispatchEvent()
      */
-    public function dispatchEvent(event:Event):Boolean
+    COMPILE::JS {override} public function dispatchEvent(event:Event):Boolean
     {
         return dispatcher.dispatchEvent(event);
     }
@@ -605,7 +689,7 @@ public dynamic class ObjectProxy extends Proxy
      *
      *  @see flash.events.EventDispatcher#hasEventListener()
      */
-    public function hasEventListener(type:String):Boolean
+    COMPILE::JS {override} public function hasEventListener(type:String):Boolean
     {
         return dispatcher.hasEventListener(type);
     }
@@ -625,7 +709,7 @@ public dynamic class ObjectProxy extends Proxy
      *
      *  @see flash.events.EventDispatcher#willTrigger()
      */
-    public function willTrigger(type:String):Boolean
+    COMPILE::JS {override} public function willTrigger(type:String):Boolean
     {
         return dispatcher.willTrigger(type);
     }

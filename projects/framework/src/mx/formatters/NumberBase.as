@@ -496,7 +496,7 @@ public class NumberBase
     {
         //Break string into component parts
         var regExp:RegExp = /^([+-])?(\d+).?(\d*)[eE]([-+]?\d+)$/;
-        var result:Array = regExp.exec(value);
+        var result:Object = regExp.exec(value);
         var sign:String = result[1];
         var first:String = result[2];
         var last:String =  result[3];

@@ -35,7 +35,7 @@ public class Base64Decoder
     public function Base64Decoder()
     {
         super();
-        data = new ByteArray();
+        data = new flash.utils.ByteArray();
     }
 
 	//--------------------------------------------------------------------------
@@ -89,9 +89,9 @@ public class Base64Decoder
     /**
      * @private
      */
-    public function drain():ByteArray
+    public function drain():flash.utils.ByteArray
     {
-        var result:ByteArray = new ByteArray();
+        var result:flash.utils.ByteArray = new flash.utils.ByteArray();
         copyByteArray(data, result, filled);
         filled = 0;
         return result;
@@ -100,7 +100,7 @@ public class Base64Decoder
     /**
      * @private
      */
-    public function flush():ByteArray
+    public function flush():flash.utils.ByteArray
     {
         if (count > 0)
         {
@@ -115,7 +115,7 @@ public class Base64Decoder
      */
     public function reset():void
     {
-        data = new ByteArray();
+        data = new flash.utils.ByteArray();
         count = 0;
         filled = 0;
     }
@@ -127,9 +127,9 @@ public class Base64Decoder
      * 
      * @return The decoded <code>flash.utils.ByteArray</code>.
      */
-    public function toByteArray():ByteArray
+    public function toByteArray():flash.utils.ByteArray
     {
-        var result:ByteArray = flush();
+        var result:flash.utils.ByteArray = flush();
         reset();
         return result;
     }
@@ -140,7 +140,7 @@ public class Base64Decoder
 	//
 	//--------------------------------------------------------------------------
 
-    private static function copyByteArray(source:ByteArray, destination:ByteArray, length:uint = 0):void
+    private static function copyByteArray(source:flash.utils.ByteArray, destination:flash.utils.ByteArray, length:uint = 0):void
     {
         var oldPosition:int = source.position;
 
@@ -165,7 +165,7 @@ public class Base64Decoder
 	//--------------------------------------------------------------------------
 
     private var count:int = 0;
-    private var data:ByteArray;
+    private var data:flash.utils.ByteArray;
     private var filled:int = 0;
     private var work:Array = [0, 0, 0, 0];
 

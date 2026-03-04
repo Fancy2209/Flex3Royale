@@ -66,7 +66,7 @@ public class FlexPrintJob
     /**
      *  @private
      */
-    private var printJob:PrintJob = new PrintJob();
+    private var printJob:flash.printing.PrintJob = new flash.printing.PrintJob();
 
     //--------------------------------------------------------------------------
     //
@@ -378,7 +378,7 @@ public class FlexPrintJob
                 r.width = Math.ceil(r.width);
                 r.height = Math.ceil(r.height);
 
-                var printJobOptions:PrintJobOptions = new PrintJobOptions();
+                var printJobOptions:flash.printing.PrintJobOptions = new flash.printing.PrintJobOptions();
                 printJobOptions.printAsBitmap = _printAsBitmap;
 
                 printJob.addPage(Sprite(obj), r, printJobOptions);

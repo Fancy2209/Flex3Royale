@@ -29,10 +29,11 @@ import flash.events.EventPhase;
 import flash.events.IEventDispatcher;
 import flash.events.MouseEvent;
 import flash.events.TimerEvent;
+COMPILE::JS { import flash.errors.ArgumentError; }
 import flash.geom.Point;
 import flash.geom.Rectangle;
-import flash.net.getClassByAlias;
-import flash.net.registerClassAlias;
+import org.apache.royale.reflection.getClassByAlias;
+import org.apache.royale.reflection.registerClassAlias;
 import flash.system.ApplicationDomain;
 import flash.system.Capabilities;
 import flash.system.Security;
@@ -87,6 +88,7 @@ import mx.utils.NameUtil;
 import mx.utils.LoaderUtil;
 import mx.utils.ObjectUtil;
 import mx.utils.SecurityUtil;
+import openfl.errors.SecurityError;
 
 // NOTE: Minimize the non-Flash classes you import here.
 // Any dependencies of SystemManager have to load in frame 1,
@@ -3370,7 +3372,7 @@ public class SystemManager extends MovieClip
             {
                 LoaderConfig._url = loaderInfo.url;
                 LoaderConfig._parameters = loaderInfo.parameters;
-                LoaderConfig._swfVersion = loaderInfo.swfVersion;
+                LoaderConfig._swfVersion = 43;//loaderInfo.swfVersion;
             }
             
             if (isStageRoot && stage)
@@ -3587,7 +3589,7 @@ public class SystemManager extends MovieClip
                 {
                     for (var i:int = 0; i < n; i++)
                     {
-                        var form_i:Object = isRemotePopUp(forms[i]) ? forms[i].window : forms[i];
+                        var form_i:Object = SystemManager.isRemotePopUp(forms[i]) ? forms[i].window : forms[i];
                         if (form_i == p)
                         {
                             var j:int = 0;
@@ -3622,7 +3624,7 @@ public class SystemManager extends MovieClip
                             for (j = 0; j < n; j++)
                             {
                                 var f:DisplayObject;
-                                var isRemotePopUp:Boolean = isRemotePopUp(forms[j]);
+                                var isRemotePopUp:Boolean = SystemManager.isRemotePopUp(forms[j]);
                                 if (isRemotePopUp)
                                 {
                                     if (forms[j].window is String)

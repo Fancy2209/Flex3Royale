@@ -24,7 +24,7 @@ import flash.display.LoaderInfo;
  *  @see mx.preloaders.DownloadProgressBar
  *  @see mx.preloaders.Preloader
  */
-public class RSLEvent extends ProgressEvent
+public class RSLEvent extends flash.events.ProgressEvent
 {
     include "../core/Version.as";
 
@@ -244,7 +244,7 @@ public class RSLEvent extends ProgressEvent
 	/**
 	 *  @private
 	 */
-	override public function clone():Event
+	override public function clone():RSLEvent
 	{
 		return new RSLEvent(type, bubbles, cancelable,
 							bytesLoaded, bytesTotal, rslIndex,

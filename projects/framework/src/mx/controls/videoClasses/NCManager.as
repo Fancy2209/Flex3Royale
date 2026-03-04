@@ -504,7 +504,7 @@ public class NCManager implements INCManager
 		}
 
         _netConnection.addEventListener(NetStatusEvent.NET_STATUS, reconnectOnStatus);
-        _netConnection.client = new NCManagerReconnectClient(this);
+        //_netConnection.client = new NCManagerReconnectClient(this);
         _netConnection.connect(ncURI, false);
     }
 
@@ -515,7 +515,7 @@ public class NCManager implements INCManager
     {
         if (_netConnection)
         {
-            _netConnection.close();
+            //_netConnection.close();
             ncConnected = false;
         }
     }
@@ -732,7 +732,7 @@ public class NCManager implements INCManager
     private function connectHTTP():Boolean
     {
         _netConnection = new NetConnection();
-        _netConnection.objectEncoding = ObjectEncoding.AMF0;
+        //_netConnection.objectEncoding = ObjectEncoding.AMF0;
         _netConnection.connect(null);
         ncConnected = true;
         return true;
@@ -923,7 +923,7 @@ public class NCManager implements INCManager
         
         // store pointers to the successful connection and uri
         _netConnection = p_nc;
-        ncURI = _netConnection.uri;
+        //ncURI = _netConnection.uri;
         ncConnected = true;
 
         if (autoSenseBW)
@@ -972,7 +972,7 @@ public class NCManager implements INCManager
         {
             var res:Responder = new Responder(getStreamLengthResult,
                     getStreamLengthStatus);
-            _netConnection.call("getStreamLength", res, _streamName);
+            //_netConnection.call("getStreamLength", res, _streamName);
         }
         else
             owner.ncConnected();
@@ -987,21 +987,21 @@ public class NCManager implements INCManager
         var stuff:Object;
 		var target:NetConnection = NetConnection(event.target);
 
-        target.client.pending = false;
+        //target.client.pending = false;
 
         if (event.info.code == "NetConnection.Connect.Success")
         {
-            _netConnection = tryNC[target.client.connIndex];
+            //_netConnection = tryNC[target.client.connIndex];
 			// Force call to onConnected when main.asc is not present
 			// which would call this function through onBWDone
 			if (!owner.autoBandWidthDetection)
 				onConnected(_netConnection, 0);
-            tryNC[target.client.connIndex] = null;
+            //tryNC[target.client.connIndex] = null;
             cleanConns();
         }
         else if (((event.info.code == "NetConnection.Connect.Failed")
                     || (event.info.code == "NetConnection.Connect.Rejected"))
-                    && (target.client.connIndex == (RTMP_CONN.length - 1)))
+        )//&& (target.client.connIndex == (RTMP_CONN.length - 1)))
 			// Try rearranging the app URL, then the fallbackServer
 			if (!connectAgain())
 				tryFallBack();
@@ -1034,7 +1034,7 @@ public class NCManager implements INCManager
         {
             event.target.removeEventListener(NetStatusEvent.NET_STATUS,
                     disconnectOnStatus);
-            NetConnection(event.target).close();
+            //NetConnection(event.target).close();
         }
     }
 

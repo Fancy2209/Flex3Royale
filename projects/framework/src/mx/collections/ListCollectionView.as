@@ -14,8 +14,11 @@ package mx.collections
 
 import flash.events.Event;
 import flash.events.EventDispatcher;
-import flash.utils.Proxy;
-import flash.utils.flash_proxy;
+import mx.utils.Proxy;
+COMPILE::SWF
+{
+    import flash.utils.flash_proxy;
+}
 import flash.utils.getQualifiedClassName;
 import mx.collections.errors.CollectionViewError;
 import mx.collections.errors.CursorError;
@@ -716,10 +719,23 @@ public class ListCollectionView extends Proxy
      *  @private
      *  Attempts to call getItemAt(), converting the property name into an int.
      */
+    COMPILE::SWF
     override flash_proxy function getProperty(name:*):*
     {
         if (name is QName)
             name = name.localName;
+        
+        return proxy_getProperty(name as String);
+    }
+
+    COMPILE::JS
+    override public function getProperty(name:String):*
+    {
+        return proxy_getProperty(name);
+    }
+
+    private function proxy_getProperty(name:String):*
+    {
 
         var index:int = -1;
         try
@@ -749,11 +765,24 @@ public class ListCollectionView extends Proxy
      *  @private
      *  Attempts to call setItemAt(), converting the property name into an int.
      */
+    COMPILE::SWF
     override flash_proxy function setProperty(name:*, value:*):void
     {
         if (name is QName)
             name = name.localName;
 
+        proxy_setProperty(name as String, value);
+        
+    }
+
+    COMPILE::JS
+    override public function setProperty(name:String, value:*):void
+    {
+        proxy_setProperty(name as String, value);   
+    }
+
+    public function proxy_setProperty(name:String, value:*):void
+    {
         var index:int = -1;
         try
         {
@@ -785,11 +814,23 @@ public class ListCollectionView extends Proxy
      *  
      *  @param name The property name that should be tested for existence.
      */
+    COMPILE::SWF
     override flash_proxy function hasProperty(name:*):Boolean
     {
         if (name is QName)
             name = name.localName;
 
+        return proxy_hasOwnProperty(name as String);
+    }
+
+    COMPILE::JS
+    override public function hasProperty(name:String):Boolean
+    {
+        return proxy_hasOwnProperty(name);
+    }
+
+    private function proxy_hasOwnProperty(name:String):Boolean
+    {
         var index:int = -1;
         try
         {
@@ -811,6 +852,7 @@ public class ListCollectionView extends Proxy
     /**
      *  @private
      */
+    COMPILE::SWF
     override flash_proxy function nextNameIndex(index:int):int
     {
         return index < length ? index + 1 : 0;
@@ -819,6 +861,7 @@ public class ListCollectionView extends Proxy
     /**
      *  @private
      */
+    COMPILE::SWF
     override flash_proxy function nextName(index:int):String
     {
         return (index - 1).toString();
@@ -827,6 +870,7 @@ public class ListCollectionView extends Proxy
     /**
      *  @private
      */
+    COMPILE::SWF
     override flash_proxy function nextValue(index:int):*
     {
         return getItemAt(index - 1);
@@ -837,7 +881,14 @@ public class ListCollectionView extends Proxy
      *  Any methods that can't be found on this class shouldn't be called,
      *  so return null
      */
+    COMPILE::SWF
     override flash_proxy function callProperty(name:*, ... rest):*
+    {
+        return null;
+    }
+
+    COMPILE::JS
+    override public function callProperty(propName:*, ... rest:Array):*
     {
         return null;
     }
@@ -851,7 +902,7 @@ public class ListCollectionView extends Proxy
     /**
      *  @inheritDoc
      */
-    public function addEventListener(type:String,
+    COMPILE::JS {override} public function addEventListener(type:String,
                                      listener:Function,
                                      useCapture:Boolean = false,
                                      priority:int = 0,
@@ -864,7 +915,7 @@ public class ListCollectionView extends Proxy
     /**
      *  @inheritDoc
      */
-    public function removeEventListener(type:String,
+    COMPILE::JS {override} public function removeEventListener(type:String,
                                         listener:Function,
                                         useCapture:Boolean = false):void
     {
@@ -874,7 +925,7 @@ public class ListCollectionView extends Proxy
     /**
      *  @inheritDoc
      */
-    public function dispatchEvent(event:Event):Boolean
+    COMPILE::JS {override} public function dispatchEvent(event:Event):Boolean
     {
         return eventDispatcher.dispatchEvent(event);
     }
@@ -882,7 +933,7 @@ public class ListCollectionView extends Proxy
     /**
      *  @inheritDoc
      */
-    public function hasEventListener(type:String):Boolean
+    COMPILE::JS {override} public function hasEventListener(type:String):Boolean
     {
         return eventDispatcher.hasEventListener(type);
     }
@@ -890,7 +941,7 @@ public class ListCollectionView extends Proxy
     /**
      *  @inheritDoc
      */
-    public function willTrigger(type:String):Boolean
+    COMPILE::JS {override} public function willTrigger(type:String):Boolean
     {
         return eventDispatcher.willTrigger(type);
     }
@@ -1542,6 +1593,7 @@ import mx.core.mx_internal;
 import mx.managers.*;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
+import mx.states.SetProperty;
 
 use namespace mx_internal;
 

@@ -12,10 +12,8 @@
 package mx.utils 
 {
 
-import flash.utils.Proxy;
-import flash.utils.flash_proxy;
-
-use namespace flash_proxy;
+import mx.utils.Proxy;
+COMPILE::SWF {import flash.utils.flash_proxy;}
 
 [ExcludeClass]
 
@@ -85,7 +83,24 @@ public dynamic class DescribeTypeCacheRecord extends Proxy
 	/**
 	 *  @private
 	 */
+	COMPILE::SWF
 	override flash_proxy function getProperty(name:*):*
+	{
+		return proxy_getProperty(name);
+	}
+	/**
+	 *  @private
+	 */
+	COMPILE::JS
+	override public function getProperty(name:String):*
+	{
+		return proxy_getProperty(name);
+	}
+
+	/**
+	 *  @private
+	 */
+	private function proxy_getProperty(name:*):*
 	{
 		var result:* = cache[name];
 		
@@ -98,10 +113,24 @@ public dynamic class DescribeTypeCacheRecord extends Proxy
 		return result;
 	}
 
+	COMPILE::SWF
+	override flash_proxy function hasProperty(name:*):Boolean
+	{
+		return proxy_hasProperty(name);
+	}
 	/**
 	 *  @private
 	 */
-	override flash_proxy function hasProperty(name:*):Boolean
+	COMPILE::JS
+	override public function hasProperty(name:String):Boolean
+	{
+		return proxy_hasProperty(name);
+	}
+
+	/**
+	 *  @private
+	 */
+	private function proxy_hasProperty(name:*):Boolean
 	{
 		if (name in cache)
 			return true;

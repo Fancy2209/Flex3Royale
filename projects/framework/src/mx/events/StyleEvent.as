@@ -21,7 +21,7 @@ import flash.events.ProgressEvent;
  *
  *  @see mx.styles.StyleManager
  */
-public class StyleEvent extends ProgressEvent
+public class StyleEvent extends flash.events.ProgressEvent
 {
     include "../core/Version.as";
 
@@ -177,7 +177,7 @@ public class StyleEvent extends ProgressEvent
     /**
      *  @private
      */
-    override public function clone():Event
+    override public function clone():StyleEvent
     {
         return new StyleEvent(type, bubbles, cancelable,
                               bytesLoaded, bytesTotal, errorText);

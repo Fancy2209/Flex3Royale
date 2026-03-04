@@ -36,8 +36,8 @@
 	<component id="ColorMatrixFilter" class="flash.filters.ColorMatrixFilter" lookupOnly="true"/>
     <component id="ColorPicker" class="mx.controls.ColorPicker"/>
     <component id="ComboBox" class="mx.controls.ComboBox"/>
-    <component id="ConstraintColumn" class="mx.containers.utilityClasses.ConstraintColumn"/>    	
-    <component id="ConstraintRow" class="mx.containers.utilityClasses.ConstraintRow"/> 	
+    <component id="ConstraintColumn" class="mx.containers.utilityClasses.ConstraintColumn"/>
+    <component id="ConstraintRow" class="mx.containers.utilityClasses.ConstraintRow"/>
     <component id="Container" class="mx.core.Container"/>
     <component id="ControlBar" class="mx.containers.ControlBar"/>
 	<component id="ConvolutionFilter" class="flash.filters.ConvolutionFilter" lookupOnly="true"/>
@@ -121,7 +121,7 @@
     <component id="RemoveItemAction" class="mx.effects.RemoveItemAction"/>
     <component id="Repeater" class="mx.core.Repeater"/>
     <component id="Resize" class="mx.effects.Resize"/>
-    <component id="RichTextEditor" class="mx.controls.RichTextEditor"/>
+    <!--component id="RichTextEditor" class="mx.controls.RichTextEditor"/-->
     <component id="Rotate" class="mx.effects.Rotate"/>
     <component id="Sequence" class="mx.effects.Sequence"/>
     <component id="SetEventHandler" class="mx.states.SetEventHandler"/>

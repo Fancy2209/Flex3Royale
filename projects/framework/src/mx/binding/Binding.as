@@ -313,11 +313,12 @@ public class Binding
             //   Error #1055: - has no properties.
             //   Error #1069: Property - not found on - and there is no default value
             // We allow any other errors to be thrown.
-            if ((error.errorID != 1006) &&
-                (error.errorID != 1009) &&
-                (error.errorID != 1010) &&
-                (error.errorID != 1055) &&
-                (error.errorID != 1069))
+            if ((error.hasOwnProperty("errorID")) &&
+                (error["errorID"] != 1006) &&
+                (error["errorID"] != 1009) &&
+                (error["errorID"] != 1010) &&
+                (error["errorID"] != 1055) &&
+                (error["errorID"] != 1069))
             {
                 throw error;
             }

@@ -394,8 +394,8 @@ public class TextRange
 		htmlTextField.defaultTextFormat = textField.defaultTextFormat;
 		htmlTextField.htmlText = "";
 
-		htmlTextField.insertXMLText(
-			0, 0, textField.getXMLText(beginIndex, endIndex))
+		//htmlTextField.insertXMLText(
+		//	0, 0, textField.getXMLText(beginIndex, endIndex))
 
 		return htmlTextField.htmlText;
 	}
@@ -417,8 +417,8 @@ public class TextRange
 		var length:int = htmlTextField.length;
 
 		var oldBeginIndex:int = beginIndex;
-		textField.insertXMLText(
-			beginIndex, endIndex, htmlTextField.getXMLText());
+		//textField.insertXMLText(
+		//	beginIndex, endIndex, htmlTextField.getXMLText());
 		// workaround for what seems to be a player bug (#207147)
 		// where a zero length selection is shifted
 		// (if no bug, this code should never execute)

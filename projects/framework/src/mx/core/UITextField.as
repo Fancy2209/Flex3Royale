@@ -1452,14 +1452,14 @@ public class UITextField extends FlexTextField
     /**
      *  @private
      */
-    override public function insertXMLText(beginIndex:int, endIndex:int, 
-                                           richText:String, 
-                                           pasting:Boolean = false):void
-    {
-        super.insertXMLText(beginIndex, endIndex, richText, pasting);
-        
-        dispatchEvent(new Event("textInsert"));
-    }
+    //override public function insertXMLText(beginIndex:int, endIndex:int, 
+    //                                       richText:String, 
+    //                                       pasting:Boolean = false):void
+    //{
+    //    super.insertXMLText(beginIndex, endIndex, richText, pasting);
+    //    
+    //    dispatchEvent(new Event("textInsert"));
+    //}
 
     /**
      *  @private
@@ -1551,7 +1551,7 @@ public class UITextField extends FlexTextField
         textFormat.antiAliasType = antiAliasType;
         textFormat.gridFitType = gridFitType;
         textFormat.sharpness = sharpness;
-        textFormat.thickness = thickness;
+        //textFormat.thickness = thickness;
         
         return textFormat;
     }
@@ -1709,7 +1709,7 @@ public class UITextField extends FlexTextField
                 antiAliasType = getStyle("fontAntiAliasType");
                 gridFitType = getStyle("fontGridFitType");
                 sharpness = getStyle("fontSharpness");
-                thickness = getStyle("fontThickness");
+                //thickness = getStyle("fontThickness");
             }
 
             if (!styleSheet)

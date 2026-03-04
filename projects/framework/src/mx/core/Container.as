@@ -4876,7 +4876,7 @@ public class Container extends UIComponent
 
             switch (event.keyCode)
             {
-                case Keyboard.DOWN:
+                case flash.ui.Keyboard.DOWN:
                 {
                     verticalScrollPosition += verticalLineScrollSize;
                     dispatchScrollEvent(direction, oldPos,
@@ -4886,7 +4886,7 @@ public class Container extends UIComponent
                     break;
                 }
 
-                case Keyboard.UP:
+                case flash.ui.Keyboard.UP:
                 {
                     verticalScrollPosition -= verticalLineScrollSize;
                     dispatchScrollEvent(direction, oldPos,
@@ -4896,7 +4896,7 @@ public class Container extends UIComponent
                     break;
                 }
 
-                case Keyboard.PAGE_UP:
+                case flash.ui.Keyboard.PAGE_UP:
                 {
                     verticalScrollPosition -= verticalPageScrollSize;
                     dispatchScrollEvent(direction, oldPos,
@@ -4906,7 +4906,7 @@ public class Container extends UIComponent
                     break;
                 }
 
-                case Keyboard.PAGE_DOWN:
+                case flash.ui.Keyboard.PAGE_DOWN:
                 {
                     verticalScrollPosition += verticalPageScrollSize;
                     dispatchScrollEvent(direction, oldPos,
@@ -4916,7 +4916,7 @@ public class Container extends UIComponent
                     break;
                 }
 
-                case Keyboard.HOME:
+                case flash.ui.Keyboard.HOME:
                 {
                     verticalScrollPosition =
                         verticalScrollBar.minScrollPosition;
@@ -4928,7 +4928,7 @@ public class Container extends UIComponent
                     break;
                 }
 
-                case Keyboard.END:
+                case flash.ui.Keyboard.END:
                 {
                     verticalScrollPosition =
                         verticalScrollBar.maxScrollPosition;
@@ -4948,7 +4948,7 @@ public class Container extends UIComponent
 
             switch (event.keyCode)
             {
-                case Keyboard.LEFT:
+                case flash.ui.Keyboard.LEFT:
                 {
                     horizontalScrollPosition -= horizontalLineScrollSize;
                     dispatchScrollEvent(direction, oldPos,
@@ -4958,7 +4958,7 @@ public class Container extends UIComponent
                     break;
                 }
 
-                case Keyboard.RIGHT:
+                case flash.ui.Keyboard.RIGHT:
                 {
                     horizontalScrollPosition += horizontalLineScrollSize;
                     dispatchScrollEvent(direction, oldPos,

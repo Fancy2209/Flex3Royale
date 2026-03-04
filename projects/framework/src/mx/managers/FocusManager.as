@@ -21,6 +21,7 @@ import flash.events.FocusEvent;
 import flash.events.IEventDispatcher;
 import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
+COMPILE::JS { import flash.errors.SecurityError; }
 import flash.system.Capabilities;
 import flash.text.TextField;
 import flash.ui.Keyboard;
@@ -2276,6 +2277,8 @@ public class FocusManager implements IFocusManager
 }
 
 import flash.display.DisplayObject;
+COMPILE::JS { import flash.errors.SecurityError; }
+COMPILE::JS { import flash.errors.SecurityError; }
 
 /** 
  * @private

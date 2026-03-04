@@ -2,10 +2,23 @@
 	"config": "flex",
 	"compilerOptions": {
 		"source-path": [
-			"src"
+			"src",
+			"projects/framework/bundles/en_US/src"
+		],
+		"js-library-path": [
+			"node_modules/openfl/dist/openfl.swc",
+			"projects/framework/bin/framework.swc"
 		],
 		"output": "bin/Flex3Royale.swf",
-		"keep-generated-actionscript": true
+		"theme": "projects/framework/bin/framework.swc",
+        "targets": ["JS"]
 	},
-	"mainClass": "Flex3Royale"
+	"mainClass": "Flex3Royale",
+	"html-template": "index.template.html",
+	"additionalOptions": [
+        "-js-getter-prefix=get_",
+		"-js-setter-prefix=set_",
+        "-compiler.proxy-base-class=mx.utils.Proxy",
+		"-locale="
+	]
 }

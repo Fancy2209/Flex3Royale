@@ -15,6 +15,7 @@ package mx.utils
 import flash.display.DisplayObject;
 import flash.utils.getQualifiedClassName;
 import mx.core.IRepeaterClient;
+COMPILE::JS { import flash.errors.SecurityError; }
 
 /**
  *  The NameUtil utility class defines static methods for

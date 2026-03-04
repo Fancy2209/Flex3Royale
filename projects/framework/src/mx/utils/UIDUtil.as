@@ -141,7 +141,7 @@ public class UIDUtil
      * @return String representation of the UID, or null if an invalid
      * ByteArray is provided.
      */
-    public static function fromByteArray(ba:ByteArray):String
+    public static function fromByteArray(ba:flash.utils.ByteArray):String
     {
         if (ba != null && ba.length >= 16 && ba.bytesAvailable >= 16)
         {
@@ -211,11 +211,11 @@ public class UIDUtil
      * @return ByteArray 16 bytes in length representing the 128-bits of the
      * UID or null if the uid could not be converted.
      */
-    public static function toByteArray(uid:String):ByteArray
+    public static function toByteArray(uid:String):flash.utils.ByteArray
     {
         if (isUID(uid))
         {
-            var result:ByteArray = new ByteArray();
+            var result:flash.utils.ByteArray = new flash.utils.ByteArray();
 
             for (var i:uint = 0; i < uid.length; i++)
             {

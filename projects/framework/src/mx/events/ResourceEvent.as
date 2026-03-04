@@ -22,7 +22,7 @@ import flash.events.ProgressEvent;
  *
  *  @see mx.resources.ResourceManager
  */
-public class ResourceEvent extends ProgressEvent
+public class ResourceEvent extends flash.events.ProgressEvent
 {
     include "../core/Version.as";
 
@@ -176,7 +176,7 @@ public class ResourceEvent extends ProgressEvent
     /**
      *  @private
      */
-    override public function clone():Event
+    override public function clone():ResourceEvent
     {
         return new ResourceEvent(type, bubbles, cancelable,
                                  bytesLoaded, bytesTotal, errorText);

@@ -139,7 +139,7 @@ public class Base64Encoder
      */
     public function encodeUTFBytes(data:String):void
     {
-        var bytes:ByteArray = new ByteArray();
+        var bytes:flash.utils.ByteArray = new flash.utils.ByteArray();
         bytes.writeUTFBytes(data);
         bytes.position = 0;
         encodeBytes(bytes);
@@ -155,7 +155,7 @@ public class Base64Encoder
      * @param offset The index from which to start encoding.
      * @param length The number of bytes to encode from the offset.
      */
-    public function encodeBytes(data:ByteArray, offset:uint=0, length:uint=0):void
+    public function encodeBytes(data:flash.utils.ByteArray, offset:uint=0, length:uint=0):void
     {
         if (length == 0)
             length = data.length;

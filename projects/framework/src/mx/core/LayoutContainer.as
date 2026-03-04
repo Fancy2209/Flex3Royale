@@ -19,8 +19,6 @@ import flash.external.ExternalInterface;
 import flash.net.URLRequest;
 import flash.net.navigateToURL;
 import flash.system.Capabilities;
-import flash.utils.describeType;
-import flash.utils.setInterval;
 import mx.containers.BoxDirection;
 import mx.containers.utilityClasses.BoxLayout;
 import mx.containers.utilityClasses.CanvasLayout;

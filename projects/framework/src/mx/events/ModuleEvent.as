@@ -20,7 +20,7 @@ import mx.modules.IModuleInfo;
  *  The ModuleEvent class represents the event object passed to the event listener
  *  for events related to dynamically-loaded modules. 
  */
-public class ModuleEvent extends ProgressEvent
+public class ModuleEvent extends flash.events.ProgressEvent
 {
     include "../core/Version.as";
 
@@ -256,7 +256,7 @@ public class ModuleEvent extends ProgressEvent
     /**
      *  @private
      */
-    override public function clone():Event
+    override public function clone():flash.events.ProgressEvent
     {
         return new ModuleEvent(type, bubbles, cancelable,
                                bytesLoaded, bytesTotal, errorText, module);

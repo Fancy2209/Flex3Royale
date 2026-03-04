@@ -12,6 +12,7 @@
 */
 
 /* Global style declaration */
+@namespace "http://www.adobe.com/2006/mxml";
 global
 {
 	backgroundAlpha: 1.0; /* this runs the opacity of nearly every square piece of the components */
@@ -1296,22 +1297,22 @@ RadioButton
 //------------------------------
 //  RichTextEditor
 //------------------------------
-*/
 
 RichTextEditor
 {
 	textAreaStyleName: "richTextEditorTextAreaStyle";
 }
+*/
 
 /*
 //------------------------------
 //  .richTextEditorTextAreaStyle
 //------------------------------
-*/
 
 .richTextEditorTextAreaStyle
 {
 }
+*/
 
 /*
 //------------------------------

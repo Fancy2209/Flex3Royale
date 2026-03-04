@@ -201,7 +201,7 @@ public class CrossDomainRSLItem extends RSLItem
             if (urlRequest.hasOwnProperty("digest"))
             {
                 // load a signed rsl by specifying the digest
-                urlRequest.digest = digests[urlIndex];
+                urlRequest["digest"] = digests[urlIndex];
             }
             else if (hasFailover())             
             {
@@ -303,7 +303,7 @@ public class CrossDomainRSLItem extends RSLItem
                 // no failover to load, all the rsls have failed to load
                 // report an error.
                  // B Feature: externalize error message
-                var hasFailover:Boolean = hasFailover();
+                var hasFailover:Boolean = this.hasFailover();
                 var rslError:ErrorEvent = new ErrorEvent(RSLEvent.RSL_ERROR);
                 rslError.text = "Flex Error #1001: Digest mismatch with RSL " +
                                 urlRequest.url + 

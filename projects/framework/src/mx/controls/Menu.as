@@ -23,7 +23,7 @@ import flash.geom.Rectangle;
 import flash.ui.Keyboard;
 import flash.utils.clearInterval;
 import flash.utils.setTimeout;
-import flash.xml.XMLNode;
+//import flash.xml.XMLNode;
 import mx.collections.ArrayCollection;
 import mx.collections.CursorBookmark;
 import mx.collections.ICollectionView;
@@ -721,8 +721,8 @@ public class Menu extends List implements IFocusManagerContainer
         // handle strings and xml
         if (typeof(value)=="string")
             value = new XML(value);
-        else if (value is XMLNode)
-            value = new XML(XMLNode(value).toString());
+        //else if (value is XMLNode)
+        //    value = new XML(XMLNode(value).toString());
         else if (value is XMLList)
             value = new XMLListCollection(value as XMLList);
         

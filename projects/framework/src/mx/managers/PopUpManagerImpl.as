@@ -24,7 +24,6 @@ import flash.events.MouseEvent;
 import flash.geom.Point;
 import flash.geom.Rectangle;
 import flash.display.Stage;
-import flash.utils.Proxy;
 
 import mx.automation.IAutomationObject;
 import mx.containers.Canvas;

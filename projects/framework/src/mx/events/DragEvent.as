@@ -25,7 +25,7 @@ import mx.core.IUIComponent;
  *  @see mx.core.DragSource
  *  @see mx.core.UIComponent
  */
-public class DragEvent extends MouseEvent
+public class DragEvent extends flash.events.MouseEvent
 {
     include "../core/Version.as";
 
@@ -313,7 +313,7 @@ public class DragEvent extends MouseEvent
 	/**
  	 *  @private
 	 */
-	override public function clone():Event
+	override public function clone():flash.events.MouseEvent
 	{
 		var cloneEvent:DragEvent = new DragEvent(type, bubbles, cancelable, 
                                                  dragInitiator, dragSource,

@@ -1,0 +1,38 @@
+{
+    "type": "lib",
+    "config": "flex",
+    "compilerOptions": {
+        "output": "bin/framework.swc",
+        "include-file": [
+            {"file": "defaults.css", "path": "../haloclassic/defaults.css"}, // If haloclassic is compiled separate, it fails to find classes from framework when compiling the main app, think that's a Royale Bug 
+            {"file": "defaults-2.0.0.css", "path": "defaults-2.0.0.css"},
+            {"file": "defaults-2.0.1.css", "path": "defaults-2.0.1.css"}
+            //{"file": "assets/Assets.swf", "path": "Assets.swf"}
+        ],
+        "include-classes": ["FrameworkClasses"],
+        "source-path": ["src", "bundles/en_US/src", "../haloclassic/src"],
+        "js-library-path": [
+            "${royalelib}/libs/Reflection.swc",
+            "${royalelib}/libs/XML.swc"
+        ],
+        "swf-library-path": [
+            "${royalelib}/libs/Reflection.swc",
+            "${royalelib}/libs/XML.swc"
+        ],
+        "js-external-library-path": ["../../node_modules/openfl/dist/openfl.swc"],
+        "swf-external-library-path": ["${royalelib}/libs/player/32.0/playerglobal.swc", "../../node_modules/openfl/dist/openfl.swc"],
+        "targets": ["SWF", "JS"],
+        "namespace": [
+            {"uri": "http://www.adobe.com/2006/mxml", "manifest": "manifest.xml"}
+        ],
+        "include-namespaces": ["http://www.adobe.com/2006/mxml"]
+    },
+    "additionalOptions":[
+        "-include-resource-bundles=controls,states,core,skins,containers,styles,collections,validators,SharedResources,effects,logging,utils,formatters",
+        "-js-getter-prefix=get_",
+		"-js-setter-prefix=set_",
+        "-compiler.proxy-base-class=mx.utils.Proxy",
+        "-library-path=",
+		"-locale="
+    ]
+}

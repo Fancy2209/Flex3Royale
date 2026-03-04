@@ -81,12 +81,22 @@ import mx.utils.GraphicsUtil;
 import mx.utils.StringUtil;
 import mx.validators.IValidatorListener;
 import mx.validators.ValidationResult;
+COMPILE::JS { import flash.errors.SecurityError; }
+COMPILE::JS { import flash.errors.ArgumentError; }
 
 use namespace mx_internal;
 
 //--------------------------------------
 //  Lifecycle events
 //--------------------------------------
+
+// These are from InteractiveObject, but Externs have no metadata
+[Event(name="focusOut", type="flash.events.FocusEvent")]
+[Event(name="click", type="flash.events.MouseEvent")]
+[Event(name="keyDown", type="flash.events.KeyboardEvent")]
+[Event(name="keyUp", type="flash.events.KeyboardEvent")]
+[Event(name="mouseUp", type="flash.events.MouseEvent")]
+[Event(name="mouseDown", type="flash.events.MouseEvent")]
 
 /**
  *  Dispatched when the component is added to a container as a content child

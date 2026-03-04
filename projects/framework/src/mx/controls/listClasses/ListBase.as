@@ -29,7 +29,7 @@ import flash.ui.Keyboard;
 import flash.utils.Dictionary;
 import flash.utils.clearInterval;
 import flash.utils.getTimer;
-import flash.utils.setInterval;
+COMPILE::SWF { import flash.utils.setInterval; }
 import mx.collections.ArrayCollection;
 import mx.collections.CursorBookmark;
 import mx.collections.ICollectionView;

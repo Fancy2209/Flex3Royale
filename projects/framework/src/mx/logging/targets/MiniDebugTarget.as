@@ -12,8 +12,6 @@
 package mx.logging.targets
 {
 
-import flash.net.LocalConnection;
-import flash.events.StatusEvent;
 import flash.events.SecurityErrorEvent;
 import mx.core.mx_internal;
 
@@ -56,9 +54,9 @@ public class MiniDebugTarget extends LineFormattedTarget
     {
         super();
 
-        _lc = new LocalConnection();
-        _lc.addEventListener(StatusEvent.STATUS, onStatus);
-        _lc.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
+        //_lc = new LocalConnection();
+        //_lc.addEventListener(StatusEvent.STATUS, onStatus);
+        //_lc.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurityError);
         _connection = connection;
         _method = method;
     }
@@ -72,7 +70,7 @@ public class MiniDebugTarget extends LineFormattedTarget
     /**
      *  @private
      */
-    private var _lc:LocalConnection;
+    //private var _lc:LocalConnection;
     
     /**
      *  @private
@@ -103,14 +101,14 @@ public class MiniDebugTarget extends LineFormattedTarget
 	 */
 	override mx_internal function internalLog(message:String):void
 	{
-        _lc.send(_connection, _method, message);
+        //_lc.send(_connection, _method, message);
     }
 
-    private function onStatus(e:StatusEvent):void
-    {
-        if (e.level == "error")
-            trace("Warning: MiniDebugTarget send failed: " + e.code);
-    }
+    //private function onStatus(e:StatusEvent):void
+    //{
+    //    if (e.level == "error")
+    //        trace("Warning: MiniDebugTarget send failed: " + e.code);
+    //}
 
     private function onSecurityError(e:SecurityErrorEvent):void
     {

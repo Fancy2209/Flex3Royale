@@ -16,9 +16,9 @@
 
     /**
      *  @copy flash.text.TextField#alwaysShowSelection
-     */
     function get alwaysShowSelection():Boolean;
     function set alwaysShowSelection(value:Boolean):void;
+     */
 
     /**
      *  @copy flash.text.TextField#antiAliasType
@@ -41,8 +41,8 @@
     /**
      *  @copy flash.text.TextField#backgroundColor
      */
-    function get backgroundColor():uint;
-    function set backgroundColor(value:uint):void;
+    function get backgroundColor():int;
+    function set backgroundColor(value:int):void;
 
     /**
      *  @copy flash.text.TextField#border
@@ -53,8 +53,8 @@
     /**
      *  @copy flash.text.TextField#borderColor
      */
-    function get borderColor():uint;
-    function set borderColor(value:uint):void;
+    function get borderColor():int;
+    function set borderColor(value:int):void;
 
     /**
      *  @copy flash.text.TextField#bottomScrollV
@@ -68,9 +68,9 @@
 
     /**
      *  @copy flash.text.TextField#condenseWhite
-     */
     function get condenseWhite():Boolean;
     function set condenseWhite(value:Boolean):void;
+     */
 
     /**
      *  @copy flash.text.TextField#defaultTextFormat
@@ -195,8 +195,8 @@
     /**
      *  @copy flash.text.TextField#textColor
      */
-    function get textColor():uint;
-    function set textColor(value:uint):void;
+    function get textColor():int;
+    function set textColor(value:int):void;
 
     /**
      *  @copy flash.text.TextField#textHeight
@@ -210,9 +210,9 @@
 
     /**
      *  @copy flash.text.TextField#thickness
-     */
     function get thickness():Number;
     function set thickness(value:Number):void;
+     */
 
     /**
      *  @copy flash.text.TextField#type
@@ -311,12 +311,12 @@
 
     /**
      *  @copy flash.text.TextField#getImageReference()
-     */
     function getImageReference(id:String):DisplayObject;
+     */
     
     /**
      *  @copy flash.text.TextField#useRichTextClipboard
-     */
     function set useRichTextClipboard(value:Boolean):void;
     function get useRichTextClipboard():Boolean;
+     */
 

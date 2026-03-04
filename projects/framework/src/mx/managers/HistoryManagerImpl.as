@@ -14,7 +14,6 @@ package mx.managers
 
 import flash.display.DisplayObject;
 import flash.display.LoaderInfo;
-import flash.events.StatusEvent;
 import flash.events.TimerEvent;
 import flash.net.navigateToURL;
 import flash.net.URLRequest;

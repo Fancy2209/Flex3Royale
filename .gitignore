@@ -3,3 +3,4 @@
 !Assets.swf
 .vscode
 bin/
+node_modules/

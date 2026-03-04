@@ -141,7 +141,7 @@ public class ButtonAccImpl extends AccImpl
 	 *
 	 *  @return State uint
 	 */
-	override public function get_accState(childID:uint):uint
+	override public function get_accState(childID:int):int
 	{
 		var accState:uint = getState(childID);
 
@@ -160,7 +160,7 @@ public class ButtonAccImpl extends AccImpl
 	 *
 	 *  @return DefaultAction String
 	 */
-	override public function get_accDefaultAction(childID:uint):String
+	override public function get_accDefaultAction(childID:int):String
 	{
 		return "Press";
 	}

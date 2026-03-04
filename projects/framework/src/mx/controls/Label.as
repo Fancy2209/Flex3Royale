@@ -1242,7 +1242,7 @@ public class Label extends UIComponent
         
         if (condenseWhiteChanged)
         {
-            textField.condenseWhite = _condenseWhite;
+            //textField.condenseWhite = _condenseWhite;
             
             condenseWhiteChanged = false;
         }

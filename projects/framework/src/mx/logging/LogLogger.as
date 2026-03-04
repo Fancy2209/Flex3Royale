@@ -17,6 +17,7 @@ import mx.managers.ISystemManager;
 import mx.managers.SystemManager;
 import mx.resources.IResourceManager;
 import mx.resources.ResourceManager;
+COMPILE::JS { import flash.errors.ArgumentError; }
 
 [ResourceBundle("logging")]
 

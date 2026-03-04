@@ -19,8 +19,8 @@ import flash.events.FocusEvent;
 import flash.events.IOErrorEvent;
 import flash.events.MouseEvent;
 import flash.events.TextEvent;
-import flash.system.IME;
-import flash.system.IMEConversionMode;
+//import flash.system.IME;
+//import flash.system.IMEConversionMode;
 import flash.text.StyleSheet;
 import flash.text.TextField;
 import flash.text.TextFieldAutoSize;
@@ -301,7 +301,7 @@ public class TextArea extends ScrollControlBase
      *  @private
      *  Previous imeMode.
      */
-    private var prevMode:String = IMEConversionMode.UNKNOWN;
+    private var prevMode:String = "unknown";//IMEConversionMode.UNKNOWN;
 
     /**
      *  @private
@@ -1810,7 +1810,7 @@ public class TextArea extends ScrollControlBase
 
         if (condenseWhiteChanged)
         {
-            textField.condenseWhite = _condenseWhite;
+            //textField.condenseWhite = _condenseWhite;
             
             condenseWhiteChanged = false;
         }
@@ -2039,7 +2039,7 @@ public class TextArea extends ScrollControlBase
             textField.styleName = this;
             textField.tabEnabled = true;
             textField.type = TextFieldType.INPUT;
-            textField.useRichTextClipboard = true;
+            //textField.useRichTextClipboard = true;
             textField.wordWrap = true;
 
             textField.addEventListener(Event.CHANGE, textField_changeHandler);
@@ -2245,32 +2245,32 @@ public class TextArea extends ScrollControlBase
 
         super.focusInHandler(event);
 
-        if (_imeMode != null && _editable)
-        {
-            IME.enabled = true;
-            prevMode = IME.conversionMode;
-            // When IME.conversionMode is unknown it cannot be
-            // set to anything other than unknown(English)      
-            try
-            {
-                if (!errorCaught &&
-                    IME.conversionMode != IMEConversionMode.UNKNOWN)
-                {
-                    IME.conversionMode = _imeMode;
-                }
-                errorCaught = false;
-            }
-            catch(e:Error)
-            {
-                // Once an error is thrown, focusIn is called 
-                // again after the Alert is closed, throw error 
-                // only the first time.
-                errorCaught = true;
-                var message:String = resourceManager.getString(
-                    "controls", "unsupportedMode", [ _imeMode ]);          
-                throw new Error(message);
-            }
-        }
+        //if (_imeMode != null && _editable)
+        //{
+        //    IME.enabled = true;
+        //    prevMode = IME.conversionMode;
+        //    // When IME.conversionMode is unknown it cannot be
+        //    // set to anything other than unknown(English)      
+        //    try
+        //    {
+        //        if (!errorCaught &&
+        //            IME.conversionMode != IMEConversionMode.UNKNOWN)
+        //        {
+        //            IME.conversionMode = _imeMode;
+        //        }
+        //        errorCaught = false;
+        //    }
+        //    catch(e:Error)
+        //    {
+        //        // Once an error is thrown, focusIn is called 
+        //        // again after the Alert is closed, throw error 
+        //        // only the first time.
+        //        errorCaught = true;
+        //        var message:String = resourceManager.getString(
+        //            "controls", "unsupportedMode", [ _imeMode ]);          
+        //        throw new Error(message);
+        //    }
+        //}
     }
 
     /**
@@ -2291,10 +2291,10 @@ public class TextArea extends ScrollControlBase
             // When IME.conversionMode is unknown it cannot be
             // set to anything other than unknown(English)
             // and when known it cannot be set to unknown           
-            if (IME.conversionMode != IMEConversionMode.UNKNOWN 
-                && prevMode != IMEConversionMode.UNKNOWN)
-                IME.conversionMode = prevMode;
-            IME.enabled = false;
+            //if (IME.conversionMode != IMEConversionMode.UNKNOWN 
+            //    && prevMode != IMEConversionMode.UNKNOWN)
+            //    IME.conversionMode = prevMode;
+            //IME.enabled = false;
         }
 
         dispatchEvent(new FlexEvent(FlexEvent.VALUE_COMMIT));

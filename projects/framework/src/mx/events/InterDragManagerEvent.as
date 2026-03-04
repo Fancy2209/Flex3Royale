@@ -169,7 +169,7 @@ public class InterDragManagerEvent extends DragEvent
 	/**
  	 *  @private
 	 */
-	override public function clone():Event
+	override public function clone():InterDragManagerEvent
 	{
 		var cloneEvent:InterDragManagerEvent = new InterDragManagerEvent(type, bubbles, cancelable, 
                                                  localX, localY, relatedObject, ctrlKey, altKey, shiftKey,

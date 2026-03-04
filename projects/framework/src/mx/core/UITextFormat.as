@@ -459,7 +459,7 @@ public class UITextFormat extends TextFormat
         measurementTextField.antiAliasType = antiAliasType;
         measurementTextField.gridFitType = gridFitType;
         measurementTextField.sharpness = sharpness;
-        measurementTextField.thickness = thickness;
+        //measurementTextField.thickness = thickness;
         
         // Set the text to be measured into the TextField.
         if (html)
@@ -530,7 +530,7 @@ public class UITextFormat extends TextFormat
         letterSpacing = source.letterSpacing;
         blockIndent = source.blockIndent;
         bullet = source.bullet;
-        display = source.display;
+        //display = source.display;
         indent = source.indent;
         kerning = source.kerning;
         tabStops = source.tabStops;

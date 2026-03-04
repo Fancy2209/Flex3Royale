@@ -444,26 +444,26 @@ public class GridRow extends HBox
         // if those values are set explicitly for this row).
         if (parent.getChildIndex(this) == 0 ||
             isNaN(columnWidths[0].x) ||
-            columnWidths.minWidth != minWidth ||
-            columnWidths.maxWidth != maxWidth ||
-            columnWidths.preferredWidth != getExplicitOrMeasuredWidth() ||
-            columnWidths.percentWidth != percentWidth ||
-            columnWidths.width != unscaledWidth ||
-            columnWidths.paddingLeft != getStyle("paddingLeft") ||
-            columnWidths.paddingRight != getStyle("paddingRight") ||
-            columnWidths.horizontalAlign != getStyle("horizontalAlign") ||
-            columnWidths.borderStyle != getStyle("borderStyle"))
+            columnWidths["minWidth"] != minWidth ||
+            columnWidths["maxWidth"] != maxWidth ||
+            columnWidths["preferredWidth"] != getExplicitOrMeasuredWidth() ||
+            columnWidths["percentWidth"] != percentWidth ||
+            columnWidths["width"] != unscaledWidth ||
+            columnWidths["paddingLeft"] != getStyle("paddingLeft") ||
+            columnWidths["paddingRight"] != getStyle("paddingRight") ||
+            columnWidths["horizontalAlign"] != getStyle("horizontalAlign") ||
+            columnWidths["borderStyle"] != getStyle("borderStyle"))
         {
             calculateColumnWidths();
-            columnWidths.minWidth = minWidth;
-            columnWidths.maxWidth = maxWidth;
-            columnWidths.preferredWidth = getExplicitOrMeasuredWidth();
-            columnWidths.percentWidth = percentWidth;
-            columnWidths.width = unscaledWidth;
-            columnWidths.paddingLeft = getStyle("paddingLeft");
-            columnWidths.paddingRight = getStyle("paddingRight");
-            columnWidths.horizontalAlign = getStyle("horizontalAlign");
-            columnWidths.borderStyle = getStyle("borderStyle");
+            columnWidths["minWidth"] = minWidth;
+            columnWidths["maxWidth"] = maxWidth;
+            columnWidths["preferredWidth"] = getExplicitOrMeasuredWidth();
+            columnWidths["percentWidth"] = percentWidth;
+            columnWidths["width"] = unscaledWidth;
+            columnWidths["paddingLeft"] = getStyle("paddingLeft");
+            columnWidths["paddingRight"] = getStyle("paddingRight");
+            columnWidths["horizontalAlign"] = getStyle("horizontalAlign");
+            columnWidths["borderStyle"] = getStyle("borderStyle");
         }
 
         var vm:EdgeMetrics = viewMetricsAndPadding;

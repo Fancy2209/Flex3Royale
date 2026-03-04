@@ -15,7 +15,10 @@ package mx.controls
 import flash.display.DisplayObject;
 import flash.events.Event;
 import flash.events.ProgressEvent;
+COMPILE::SWF
+{
 import flash.media.Camera;
+}
 import mx.controls.videoClasses.VideoPlayer;
 import mx.core.EdgeMetrics;
 import mx.core.IFlexDisplayObject;
@@ -1368,12 +1371,13 @@ public class VideoDisplay extends UIComponent
      *  @param camera A Camera object that 
      *  is capturing video data.
      */
+    COMPILE::SWF
     public function attachCamera(camera:Camera):void 
     {
         if (!videoPlayer)
             createVideoPlayer();
 
-        videoPlayer.attachCamera(camera);
+        videoPlayer["attachCamera"](camera);
         videoPlayer.visible = true;
     }
 

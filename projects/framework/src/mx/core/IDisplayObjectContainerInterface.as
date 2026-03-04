@@ -13,7 +13,7 @@
  *  The IDisplayObjectContainerInterface defines the basic set of APIs
  *  for web version of flash.display.DisplayObjectContainer
  */
-import flash.text.TextSnapshot;
+//import flash.text.TextSnapshot;
 import flash.geom.Point;
 
     /**
@@ -63,8 +63,8 @@ import flash.geom.Point;
 
     /**
      *  @copy flash.display.DisplayObjectContainer#textSnapshot
-     */
     function get textSnapshot():TextSnapshot;
+     */
     
     /**
      *  @copy flash.display.DisplayObjectContainer#getObjectsUnderPoint()

@@ -73,7 +73,7 @@ public class XMLNotifier
 													 value:Object,
 													 detail:Object):void
 	    {
-	        var xmlWatchers:Dictionary = arguments.callee.watched;
+	        var xmlWatchers:Dictionary = arguments["callee"].watched;
 	        if (xmlWatchers != null)
 	        {
 	            for (var notifiable:Object in xmlWatchers)

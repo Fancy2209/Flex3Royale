@@ -12,7 +12,7 @@
 package mx.utils
 {
 
-import flash.xml.XMLDocument;
+//import flash.xml.XMLDocument;
 
 /**
  *  The XMLUtil class is an all-static class
@@ -41,7 +41,6 @@ public class XMLUtil
      *  @param str XML string.
 	 *
      *  @return New XML object that ignored whitespace.
-     */
     public static function createXMLDocument(str:String):XMLDocument
     {
 	    var xml:XMLDocument = new XMLDocument();
@@ -49,6 +48,7 @@ public class XMLUtil
 		xml.parseXML(str);
 		return xml;
     }
+	*/
 
     /**
 	 *  Returns <code>true</code> if the two QName parameters have identical

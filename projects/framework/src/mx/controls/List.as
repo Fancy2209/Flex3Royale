@@ -1368,7 +1368,7 @@ public class List extends ListBase implements IIMESupport
                 while (rowNum < listItems.length)
                 {
                     var rr:Array = listItems.pop();
-                    rowInfo.pop();
+                    rowInfo["pop"]();
                     while (rr.length)
                     {
                         item = rr.pop();

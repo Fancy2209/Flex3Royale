@@ -20,7 +20,7 @@ import flash.events.MouseEvent;
  *  The FlexMouseEvent class represents the event object passed to
  *  the event listener for Flex-specific mouse activity.
  */
-public class FlexMouseEvent extends MouseEvent
+public class FlexMouseEvent extends flash.events.MouseEvent
 {
     include "../core/Version.as";
 
@@ -192,11 +192,11 @@ public class FlexMouseEvent extends MouseEvent
 	/**
 	 *  @private
 	 */
-	override public function clone():Event
+	override public function clone():flash.events.MouseEvent
 	{
-		return new FlexMouseEvent(type, bubbles, cancelable, localX, localY,
-								  relatedObject, ctrlKey, altKey, shiftKey,
-								  buttonDown, delta);
+		return new FlexMouseEvent(this.type, this.bubbles, this.cancelable, this.localX, this.localY,
+								  this.relatedObject, this.ctrlKey, this.altKey, this.shiftKey,
+								  this.buttonDown, this.delta);
 	}
 }
 

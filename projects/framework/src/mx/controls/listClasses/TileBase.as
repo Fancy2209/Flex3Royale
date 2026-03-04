@@ -21,7 +21,7 @@ import flash.events.KeyboardEvent;
 import flash.geom.Point;
 import flash.ui.Keyboard;
 import flash.utils.Dictionary;
-import flash.utils.setInterval;
+COMPILE::SWF { import flash.utils.setInterval; }
 import mx.collections.CursorBookmark;
 import mx.collections.ItemResponder;
 import mx.collections.errors.ItemPendingError;

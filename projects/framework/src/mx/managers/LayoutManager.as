@@ -16,6 +16,7 @@ import flash.display.DisplayObject;
 import flash.display.Stage;
 import flash.events.Event;
 import flash.events.EventDispatcher;
+COMPILE::JS { import flash.errors.SecurityError; }
 
 import mx.core.ApplicationGlobals;
 import mx.core.IFlexDisplayObject;

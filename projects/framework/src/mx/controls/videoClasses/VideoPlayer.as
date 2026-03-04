@@ -16,6 +16,7 @@ import flash.events.Event;
 import flash.events.NetStatusEvent;
 import flash.events.ProgressEvent;
 import flash.events.TimerEvent;
+COMPILE::JS { import flash.errors.ArgumentError; }
 import flash.media.SoundTransform;
 import flash.media.Video;
 import flash.net.NetConnection;
@@ -2619,8 +2620,8 @@ public class VideoPlayer extends Video
         if (_state != DISCONNECTED) 
         {
             if (_ncMgr == null || 
-                 _ncMgr.netConnection == null ||
-                 !_ncMgr.netConnection.connected)
+                 _ncMgr.netConnection == null)// ||
+                // !_ncMgr.netConnection.connected)
             {
                 setState(DISCONNECTED);
                 return false;
@@ -2874,6 +2875,8 @@ public class VideoPlayer extends Video
 import flash.net.NetConnection;
 import flash.net.NetStream;
 import mx.controls.videoClasses.VideoPlayer;
+import openfl.errors.ArgumentError;
+COMPILE::JS { import flash.errors.ArgumentError; }
 
 /**
  *  @private

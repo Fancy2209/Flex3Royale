@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:fx="http://www.adobe.com/2006/mxml"
-	xmlns:mx="library://ns.adobe.com/flex/mx">
+<fx:Application xmlns:fx="http://www.adobe.com/2006/mxml">
 
 	<fx:Script>
 		<![CDATA[
@@ -8,11 +7,11 @@
 			
 			public function onButtonClick():void
 			{
-				var alert:Alert = Alert.show("Hello from Adobe Flex 3!\nRunning with Apache Royale and OpenFL!", "Message", Alert.OK, this);
+				var alert:Alert = Alert.show("Hello from Adobe Flex 3 running with Apache Royale and OpenFL!", "Message", Alert.OK, this);
 			}
 		]]>
 	</fx:Script>
 
-	<mx:Button label="Click Me!" click="onButtonClick()"/>
+	<fx:Button label="Click Me!" click="onButtonClick()"/>
 
-</mx:Application>
+</fx:Application>

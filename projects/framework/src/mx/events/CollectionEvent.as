@@ -20,7 +20,7 @@ import flash.events.Event;
  *
  *  @see FlexEvent#CURSOR_UPDATE
  */
-public class CollectionEvent extends Event
+public class CollectionEvent extends flash.events.Event
 {
 	include "../core/Version.as";
 
@@ -210,8 +210,7 @@ public class CollectionEvent extends Event
     override public function toString():String
     {
         return formatToString("CollectionEvent", "kind", "location",
-							  "oldLocation", "type", "bubbles",
-							  "cancelable", "eventPhase");
+							  "oldLocation", "type", "bubbles,cancelable,eventPhase");
     }
 
     //--------------------------------------------------------------------------
