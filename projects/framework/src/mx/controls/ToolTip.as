@@ -221,7 +221,7 @@ public class ToolTip extends UIComponent implements IToolTip, IFontContextCompon
         if (!border)
         {
             var borderClass:Class = getStyle("borderSkin");
-            border = new borderClass();
+            border = new borderClass() as IFlexDisplayObject;
             if (border is ISimpleStyleClient)
                 ISimpleStyleClient(border).styleName = this;
             addChild(DisplayObject(border));

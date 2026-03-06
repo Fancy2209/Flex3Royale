@@ -4,13 +4,13 @@
     "compilerOptions": {
         "output": "bin/framework.swc",
         "include-file": [
-            {"file": "defaults.css", "path": "../haloclassic/defaults.css"}, // If haloclassic is compiled separate, it fails to find classes from framework when compiling the main app, think that's a Royale Bug 
+            {"file": "defaults.css", "path": "defaults.css"}, // If haloclassic is compiled separate, it fails to find classes from framework when compiling the main app, think that's a Royale Bug 
             {"file": "defaults-2.0.0.css", "path": "defaults-2.0.0.css"},
             {"file": "defaults-2.0.1.css", "path": "defaults-2.0.1.css"}
             //{"file": "assets/Assets.swf", "path": "Assets.swf"}
         ],
         "include-classes": ["FrameworkClasses"],
-        "source-path": ["src", "bundles/en_US/src", "../haloclassic/src"],
+        "source-path": ["src", "bundles/en_US/src"],
         "js-library-path": [
             "${royalelib}/libs/Reflection.swc",
             "${royalelib}/libs/XML.swc"

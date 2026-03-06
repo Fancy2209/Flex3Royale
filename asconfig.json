@@ -1,24 +1,40 @@
 {
 	"config": "flex",
 	"compilerOptions": {
+		"html-template": "index.template.html",
 		"source-path": [
 			"src",
-			"projects/framework/bundles/en_US/src"
+			"projects/framework/bundles/en_US/src",
+			"projects/framework/src"
 		],
 		"js-library-path": [
 			"node_modules/openfl/dist/openfl.swc",
 			"projects/framework/bin/framework.swc"
 		],
 		"output": "bin/Flex3Royale.swf",
-		"theme": "projects/framework/bin/framework.swc",
-        "targets": ["JS"]
+		"theme": "projects/haloclassic/bin/haloclassic.swc",
+        "targets": ["JS"],
+        "namespace": [
+            {"uri": "http://www.adobe.com/2006/mxml", "manifest": "projects/framework/manifest.xml"}
+        ]
 	},
 	"mainClass": "Flex3Royale",
-	"html-template": "index.template.html",
 	"additionalOptions": [
+        "--namespace=http://www.adobe.com/2006/mxml,projects/framework/manifest.xml",
+		"-js-library-path=node_modules/openfl/dist/openfl.swc",
+		"-js-library-path+=${royalelib}/libs/Core.swc",
+		"-js-library-path+=${royalelib}/libs/Reflection.swc",
+		"-js-library-path+=${royalelib}/libs/XML.swc",
+		"-js-library-path+=${royalelib}/../frameworks/js/libs/CoreJS.swc",
+		"-js-library-path+=${royalelib}/../frameworks/js/libs/ReflectionJS.swc",
+		"-js-library-path+=${royalelib}/../frameworks/js/libs/XMLJS.swc",
+		//"-js-library-path+=projects/framework/bin/framework.swc",
+		"-js-library-path+=projects/haloclassic/bin/haloclassic.swc",
         "-js-getter-prefix=get_",
 		"-js-setter-prefix=set_",
         "-compiler.proxy-base-class=mx.utils.Proxy",
+        "-compiler.mxml.children-as-data=false",
+		"-compiler.mxml.compatibility-version=3.0.0",
 		"-locale="
 	]
 }

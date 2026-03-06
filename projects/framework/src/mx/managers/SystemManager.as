@@ -88,7 +88,14 @@ import mx.utils.NameUtil;
 import mx.utils.LoaderUtil;
 import mx.utils.ObjectUtil;
 import mx.utils.SecurityUtil;
+COMPILE::JS {
 import openfl.errors.SecurityError;
+import org.apache.royale.reflection.getDefinitionByName;
+import flash.Lib;
+import flash.errors.Error;
+BrowserManagerImpl;
+HistoryManagerImpl;
+}
 
 // NOTE: Minimize the non-Flash classes you import here.
 // Any dependencies of SystemManager have to load in frame 1,
@@ -306,6 +313,8 @@ public class SystemManager extends MovieClip
 
         if (root && root.loaderInfo)
             root.loaderInfo.addEventListener(Event.INIT, initHandler);
+
+        COMPILE::JS{root.loaderInfo.dispatchEvent(new Event(Event.INIT))};
             
     }
     
@@ -1866,6 +1875,7 @@ public class SystemManager extends MovieClip
      */
     public function create(... params):Object
     {
+        trace("create");
         var mainClassName:String = info()["mainClassName"];
 
         if (mainClassName == null)
@@ -1876,7 +1886,7 @@ public class SystemManager extends MovieClip
             mainClassName = url.substring(slash + 1, dot);
         }
 
-        var mainClass:Class = Class(getDefinitionByName(mainClassName));
+        var mainClass:Class = Class(this.getDefinitionByName(mainClassName));
         
         return mainClass ? new mainClass() : null;
     }
@@ -1937,7 +1947,7 @@ public class SystemManager extends MovieClip
         if (cdRsls && cdRsls.length > 0)
         {
             var normalizedURL:String = LoaderUtil.normalizeURL(this.loaderInfo);
-            var crossDomainRSLItem:Class = Class(getDefinitionByName("mx.core::CrossDomainRSLItem"));
+            var crossDomainRSLItem:Class = Class(this.getDefinitionByName("mx.core::CrossDomainRSLItem"));
             n = cdRsls.length;
             for (i = 0; i < n; i++)
             {
@@ -1975,18 +1985,18 @@ public class SystemManager extends MovieClip
         // The other managers get registered with Singleton later,
         // in frame 2, by docFrameHandler().
         Singleton.registerClass("mx.resources::IResourceManager",
-            Class(getDefinitionByName("mx.resources::ResourceManagerImpl")));
+            Class(this.getDefinitionByName("mx.resources::ResourceManagerImpl")));
         var resourceManager:IResourceManager = ResourceManager.getInstance();
 
         var fontRegistry:EmbeddedFontRegistry;  // link in the EmbeddedFontRegistry Class           
         Singleton.registerClass("mx.core::IEmbeddedFontRegistry",
-                Class(getDefinitionByName("mx.core::EmbeddedFontRegistry")));
+                Class(this.getDefinitionByName("mx.core::EmbeddedFontRegistry")));
                 
         Singleton.registerClass("mx.styles::IStyleManager",
-            Class(getDefinitionByName("mx.styles::StyleManagerImpl")));
+            Class(this.getDefinitionByName("mx.styles::StyleManagerImpl")));
 
         Singleton.registerClass("mx.styles::IStyleManager2",
-            Class(getDefinitionByName("mx.styles::StyleManagerImpl")));
+            Class(this.getDefinitionByName("mx.styles::StyleManagerImpl")));
 
 
         // The FlashVars of the SWF's HTML wrapper,
@@ -2078,7 +2088,7 @@ public class SystemManager extends MovieClip
         // Local variables for certain classes we need to check against below.
         // This is the backdoor way around linking in the class in question.
         var uiComponentClassName:Class =
-            Class(getDefinitionByName("mx.core.UIComponent"));
+            Class(this.getDefinitionByName("mx.core.UIComponent"));
 
         // If the document property isn't already set on the child,
         // set it to be the same as this component's document.
@@ -2120,7 +2130,7 @@ public class SystemManager extends MovieClip
         // Need to check to see if the child is an UIComponent
         // without actually linking in the UIComponent class.
         if (uiComponentClassName && child is uiComponentClassName)
-            uiComponentClassName(child).initThemeColor();
+            uiComponentClassName(child).mx_internal::initThemeColor();
 
         // Inform the component that it's style properties
         // have been fully initialized. Most components won't care,
@@ -2809,6 +2819,7 @@ public class SystemManager extends MovieClip
     /**
      *  @inheritDoc
      */
+    COMPILE::SWF
     public function getDefinitionByName(name:String):Object
     {
         var domain:ApplicationDomain =
@@ -2817,7 +2828,7 @@ public class SystemManager extends MovieClip
             info()["currentDomain"] as ApplicationDomain;
 
         //trace("SysMgr.getDefinitionByName domain",domain,"currentDomain",info()["currentDomain"]);    
-            
+
         var definition:Object;
 
         if (domain.hasDefinition(name))
@@ -2827,6 +2838,28 @@ public class SystemManager extends MovieClip
         }
 
         return definition;
+    }
+
+
+    COMPILE::JS
+    public function getDefinitionByName(name:String):Object
+    {
+        trace("getDefinitionByName", name);
+        var index:Number = name.lastIndexOf("::");
+        if (index != -1)
+        {
+            name = name.substr(0, index) + "." + name.substr(index + 2);
+        }
+        try {
+            var def:* = org.apache.royale.reflection.getDefinitionByName(name);
+        } catch(e:Error) {
+            return null;
+        }
+        if (def)
+        {
+            return def;
+        }
+        return flash.Lib.getDefinitionByName(name);
     }
 
     /**
@@ -2841,21 +2874,40 @@ public class SystemManager extends MovieClip
     {
         var className:String = getQualifiedClassName(object);
 
-        for (var p:* in allSystemManagers)
-        {
-            var sm:ISystemManager = p as ISystemManager;
-            var domain:ApplicationDomain = sm.loaderInfo.applicationDomain;
-            try
+        COMPILE::SWF {
+            for (var p:* in allSystemManagers)
             {
-                var cls:Class = Class(domain.getDefinition(className));
-                if (object is cls)
-                    return sm as DisplayObject;
-            }
-            catch(e:Error)
-            {
+                var sm:ISystemManager = p as ISystemManager;
+                var domain:ApplicationDomain = sm.loaderInfo.applicationDomain;
+                try
+                {
+                    var cls:Class = Class(domain.getDefinition(className));
+                    if (object is cls)
+                        return sm as DisplayObject;
+                }
+                catch(e:Error)
+                {
+                }
             }
         }
-        return null;
+        COMPILE::JS
+        {
+            for (var p:* in allSystemManagers)
+            {
+                var sm:ISystemManager = p as ISystemManager;
+                if(p.hasOwnProperty("isTopLevelRoot")) { continue; }
+                try
+                {
+                    var cls:Class = Class(p.getDefinitionByName(className));
+                    if(object is cls)
+                        return sm as DisplayObject;
+                }
+                catch(e:Error)
+                {
+                }
+            }
+            return null;
+        }
     }
     
     /**
@@ -3052,8 +3104,10 @@ public class SystemManager extends MovieClip
             addEventListener(SWFBridgeRequest.RESET_MOUSE_CURSOR_REQUEST, resetMouseCursorRequestHandler);
         }
 
-        var docFrame:int = (totalFrames == 1)? 0 : 1;
-        addEventListener(Event.ENTER_FRAME, docFrameListener);
+        COMPILE::SWF {
+            var docFrame:int = (totalFrames == 1)? 0 : 1;
+            addEventListener(Event.ENTER_FRAME, docFrameListener);
+        }
 
         /*
         addFrameScript(docFrame, docFrameHandler);
@@ -3064,6 +3118,8 @@ public class SystemManager extends MovieClip
         */
 
         initialize();
+        docFrameHandler();
+        trace("docFrameHandler");
         
     }
 
@@ -3176,22 +3232,22 @@ public class SystemManager extends MovieClip
         // if the class can't be found.
 
         Singleton.registerClass("mx.managers::IBrowserManager",
-            Class(getDefinitionByName("mx.managers::BrowserManagerImpl")));
+            Class(this.getDefinitionByName("mx.managers::BrowserManagerImpl")));
 
         Singleton.registerClass("mx.managers::ICursorManager",
-            Class(getDefinitionByName("mx.managers::CursorManagerImpl")));
+            Class(this.getDefinitionByName("mx.managers::CursorManagerImpl")));
 
         Singleton.registerClass("mx.managers::IHistoryManager",
-            Class(getDefinitionByName("mx.managers::HistoryManagerImpl")));
+            Class(this.getDefinitionByName("mx.managers::HistoryManagerImpl")));
 
         Singleton.registerClass("mx.managers::ILayoutManager",
-            Class(getDefinitionByName("mx.managers::LayoutManager")));
+            Class(this.getDefinitionByName("mx.managers::LayoutManager")));
 
         Singleton.registerClass("mx.managers::IPopUpManager",
-            Class(getDefinitionByName("mx.managers::PopUpManagerImpl")));
+            Class(this.getDefinitionByName("mx.managers::PopUpManagerImpl")));
 
         Singleton.registerClass("mx.managers::IToolTipManager2",
-            Class(getDefinitionByName("mx.managers::ToolTipManagerImpl")));
+            Class(this.getDefinitionByName("mx.managers::ToolTipManagerImpl")));
         
         var dragManagerClass:Class = null;
         
@@ -3201,16 +3257,16 @@ public class SystemManager extends MovieClip
         // desktop.  If it can't be found, then we're 
         // not in AIR, and it can't be linked in, so we should just work off of 
         // the regular Flex DragManager.
-        dragManagerClass = Class(getDefinitionByName("mx.managers::NativeDragManagerImpl"));
+        dragManagerClass = Class(this.getDefinitionByName("mx.managers::NativeDragManagerImpl"));
         
         if (dragManagerClass == null)
-            dragManagerClass = Class(getDefinitionByName("mx.managers::DragManagerImpl"));
+            dragManagerClass = Class(this.getDefinitionByName("mx.managers::DragManagerImpl"));
             
         Singleton.registerClass("mx.managers::IDragManager", dragManagerClass);
 
         var textFieldFactory:TextFieldFactory; // ref to cause TextFieldFactory to be linked in
         Singleton.registerClass("mx.core::ITextFieldFactory", 
-            Class(getDefinitionByName("mx.core::TextFieldFactory")));
+            Class(this.getDefinitionByName("mx.core::TextFieldFactory")));
 
         executeCallbacks();
         doneExecutingInitCallbacks = true;
@@ -3222,7 +3278,7 @@ public class SystemManager extends MovieClip
             for (var i:int = 0; i < n; ++i)
             {
                 // trace("initializing mixin " + mixinList[i]);
-                var c:Class = Class(getDefinitionByName(mixinList[i]));
+                var c:Class = Class(this.getDefinitionByName(mixinList[i]));
                 c["init"](this);
             }
         }
@@ -3237,6 +3293,7 @@ public class SystemManager extends MovieClip
     private function installCompiledResourceBundles():void
     {
         var info:Object = this.info();
+        trace("info", info);
         
         var applicationDomain:ApplicationDomain =
             !topLevel && parent is Loader ?
@@ -3273,7 +3330,7 @@ public class SystemManager extends MovieClip
 
         if (frameList && frameList[currentLabel])
         {
-            var c:Class = Class(getDefinitionByName(frameList[currentLabel]));
+            var c:Class = Class(this.getDefinitionByName(frameList[currentLabel]));
             c["frame"](this);
         }
 

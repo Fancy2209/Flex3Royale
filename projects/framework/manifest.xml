@@ -14,6 +14,8 @@
 <componentPackage>
 
     <component id="Accordion" class="mx.containers.Accordion"/>
+    <component id="AccordionHeader" class="mx.containers.accordionClasses.AccordionHeader"/>
+    <component id="Alert" class="mx.controls.Alert"/>
     <component id="AddChild" class="mx.states.AddChild"/>
     <component id="AddChildAction" class="mx.effects.AddChildAction"/>
     <component id="AddItemAction" class="mx.effects.AddItemAction"/>
@@ -30,7 +32,9 @@
     <component id="Box" class="mx.containers.Box"/>
     <component id="Button" class="mx.controls.Button"/>
     <component id="ButtonBar" class="mx.controls.ButtonBar"/>
+    <component id="ButtonBarButton" class="mx.controls.buttonBarClasses.ButtonBarButton"/>
     <component id="Canvas" class="mx.containers.Canvas"/>
+    <component id="CalendarLayout" class="mx.controls.CalendarLayout"/>
     <component id="CheckBox" class="mx.controls.CheckBox"/>
     <component id="Class" class="Class" lookupOnly="true"/>
 	<component id="ColorMatrixFilter" class="flash.filters.ColorMatrixFilter" lookupOnly="true"/>
@@ -44,6 +48,7 @@
     <component id="CreditCardValidator" class="mx.validators.CreditCardValidator"/>
     <component id="CurrencyFormatter" class="mx.formatters.CurrencyFormatter"/>
     <component id="CurrencyValidator" class="mx.validators.CurrencyValidator"/>
+    <component id="CursorManager" class="mx.managers.CursorManager"/>
     <component id="DataGrid" class="mx.controls.DataGrid"/>
     <component id="DataGridColumn" class="mx.controls.dataGridClasses.DataGridColumn"/>
     <component id="DataGridItemRenderer" class="mx.controls.dataGridClasses.DataGridItemRenderer"/>
@@ -58,12 +63,14 @@
     <component id="Dissolve" class="mx.effects.Dissolve"/>
     <component id="DividedBox" class="mx.containers.DividedBox"/>
 	<component id="DropShadowFilter" class="flash.filters.DropShadowFilter" lookupOnly="true"/>
+	<component id="DragManager" class="mx.managers.DragManager"/>
 	<component id="EffectTargetFilter" class="mx.effects.EffectTargetFilter"/>
     <component id="EmailValidator" class="mx.validators.EmailValidator"/>
     <component id="Fade" class="mx.effects.Fade"/>
     <component id="Form" class="mx.containers.Form"/>
     <component id="FormHeading" class="mx.containers.FormHeading"/>
     <component id="FormItem" class="mx.containers.FormItem"/>
+    <component id="FormItemLabel" class="mx.controls.FormItemLabel"/>
     <component id="Function" class="Function" lookupOnly="true"/>
     <component id="Glow" class="mx.effects.Glow"/>
 	<component id="GlowFilter" class="flash.filters.GlowFilter" lookupOnly="true"/>
@@ -88,9 +95,12 @@
     <component id="LinkBar" class="mx.controls.LinkBar"/>
     <component id="LinkButton" class="mx.controls.LinkButton"/>
     <component id="List" class="mx.controls.List"/>
+    <component id="ListBase" class="mx.controls.listClasses.ListBase"/>
     <component id="ListCollectionView" class="mx.collections.ListCollectionView"/>
+	<component id="Loader" class="flash.display.Loader" lookupOnly="true"/>
     <component id="MaskEffect" class="mx.effects.MaskEffect"/>
 	<component id="Matrix" class="flash.geom.Matrix" lookupOnly="true"/>
+    <component id="Menu" class="mx.controls.Menu"/>
     <component id="MenuBar" class="mx.controls.MenuBar"/>
     <component id="MiniDebugTarget" class="mx.logging.targets.MiniDebugTarget"/>
     <component id="Module" class="mx.modules.Module"/>
@@ -124,6 +134,7 @@
     <!--component id="RichTextEditor" class="mx.controls.RichTextEditor"/-->
     <component id="Rotate" class="mx.effects.Rotate"/>
     <component id="Sequence" class="mx.effects.Sequence"/>
+    <component id="ScrollBar" class="mx.controls.scrollClasses.ScrollBar"/>
     <component id="SetEventHandler" class="mx.states.SetEventHandler"/>
     <component id="SetProperty" class="mx.states.SetProperty"/>
     <component id="SetPropertyAction" class="mx.effects.SetPropertyAction"/>
@@ -140,7 +151,9 @@
     <component id="String" class="String" lookupOnly="true"/>
     <component id="StringValidator" class="mx.validators.StringValidator"/>
     <component id="Stroke" class="mx.graphics.Stroke"/>
+    <component id="SwatchPanel" class="mx.controls.colorPickerClasses.SwatchPanel"/>
     <component id="SWFLoader" class="mx.controls.SWFLoader"/>
+    <component id="Tab" class="mx.controls.tabBarClasses.Tab"/>
     <component id="TabBar" class="mx.controls.TabBar"/>
     <component id="TabNavigator" class="mx.containers.TabNavigator"/>
     <component id="Text" class="mx.controls.Text"/>
@@ -151,6 +164,7 @@
     <component id="TitleWindow" class="mx.containers.TitleWindow"/>
     <component id="ToggleButtonBar" class="mx.controls.ToggleButtonBar"/>
     <component id="ToolBar" class="mx.controls.richTextEditorClasses.ToolBar"/>
+    <component id="ToolTip" class="mx.controls.ToolTip"/>
     <component id="TraceTarget" class="mx.logging.targets.TraceTarget"/>
     <component id="Transition" class="mx.states.Transition"/>
     <component id="Tree" class="mx.controls.Tree"/>
@@ -169,6 +183,7 @@
     <component id="WipeLeft" class="mx.effects.WipeLeft"/>
     <component id="WipeRight" class="mx.effects.WipeRight"/>
     <component id="WipeUp" class="mx.effects.WipeUp"/>
+    <component id="Window" class="mx.core.Window"/>
     <component id="XMLListCollection" class="mx.collections.XMLListCollection"/>
     <component id="ZipCodeFormatter" class="mx.formatters.ZipCodeFormatter"/>
     <component id="ZipCodeValidator" class="mx.validators.ZipCodeValidator"/>

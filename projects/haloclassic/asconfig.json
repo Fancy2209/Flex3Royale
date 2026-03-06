@@ -4,8 +4,8 @@
     "compilerOptions": {
         "output": "bin/haloclassic.swc",
         "include-file": [
-            {"file": "defaults.css", "path": "defaults.css"},
-            //{"file": "assets/Assets.swf", "path": "Assets.swf"}
+            {"file": "defaults.css", "path": "defaults.css"}//,
+            //{"file": "assets/", "path": "assets/"}
         ],
         "include-classes": ["HaloClassicClasses"],
         "source-path": ["src", "../framework/bundles/en_US/src"],
@@ -19,9 +19,12 @@
         ],
         "js-external-library-path": ["../../node_modules/openfl/dist/openfl.swc", "../framework/bin/framework.swc"],
         "swf-external-library-path": ["${royalelib}/libs/player/32.0/playerglobal.swc", "../../node_modules/openfl/dist/openfl.swc", "../framework/bin/framework.swc"],
-        "targets": ["SWF", "JS"]
+        "targets": ["SWF", "JS"],
+        "namespace": [
+            {"uri": "http://www.adobe.com/2006/mxml", "manifest": "../framework/manifest.xml"}
+        ]
     },
-    "additionalOptions":[
+    "additionalOptions": [
         "-include-resource-bundles=controls,styles,core,collections,skins,effects,containers",
         "-library-path=",
         "-compiler.proxy-base-class=mx.utils.Proxy",

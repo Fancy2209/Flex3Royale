@@ -352,9 +352,15 @@ public class StyleManagerImpl implements IStyleManager2
 			delete _inheritingStyles["textDecoration"];
 			delete _inheritingStyles["leading"];
 		}
-		
+
+COMPILE::SWF {
 		if (!stylesRoot)
 			stylesRoot = _selectors["global"].addStyleToProtoChain({}, null);
+}
+COMPILE::JS {
+		if (!stylesRoot)
+			stylesRoot = _selectors["global"].mx_internal::addStyleToProtoChain({}, null);
+}
     }
     
     /**

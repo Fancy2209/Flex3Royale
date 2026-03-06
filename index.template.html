@@ -5,9 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>OpenFL and Adobe Flex 3 Application</title>
-    <script src="https://unpkg.com/pako@2.1.0/index.js"></script>
-    <script src="https://unpkg.com/howler@2.2.4/dist/howler.js"></script>
-    <script src="https://unpkg.com/openfl@9.5.1/dist/openfl.min.js"></script>
+    <script src="openfl.min.js"></script>
     <script src="https://unpkg.com/actuate@1.9.0/dist/actuate.min.js"></script>
     <script>
         var flash = openfl;
@@ -26,9 +24,15 @@
 
 <body>
     <script>
-        var stage = new openfl.display.Stage(0, 0, null, Flex3Royale, {
-            allowHighDPI: true,
-        });
+        Flex3Royale_mx_managers_SystemManager.prototype.info = function() {
+            return  {  
+                mainClassName: "Flex3Royale",
+                usePreloader: false,
+                compiledLocales: ["en_US"],
+                mixins: [ /*"_HelloFlex_FlexInit", "_HelloFlex_Styles", "mx.styles.StyleManagerImpl"*/ ]
+            }
+        };
+        var stage = new openfl.display.Stage(320, 240, null, Flex3Royale_mx_managers_SystemManager);
         document.body.appendChild(stage.element);
     </script>
 </body>

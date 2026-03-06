@@ -91,15 +91,19 @@ public class TextFieldFactory implements ITextFieldFactory
 		{
 			for (var iter:Object in textFieldDictionary)
 			{
-				textField = TextField(iter);
-				break;
+				trace(iter);
+				if(iter.hasOwnProperty("replaceText"))
+				{
+					textField = TextField(iter);
+					break;
+				}
 			}
 		}
 		if (!textField)
 		{
-			if (moduleFactory)
-				textField = TextField(moduleFactory.create("flash.text.TextField"));			
-			else 
+			//if (moduleFactory)
+			//	textField = TextField(moduleFactory.create("flash.text.TextField"));			
+			//else 
 				textField = new TextField();	
 			
 			// The dictionary could be empty, but not null because entries in the dictionary
